@@ -1,0 +1,15 @@
+# Backup files
+*.backup
+
+# System files
+.DS_Store
+
+# Editor files
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Dependency directories
+node_modules/

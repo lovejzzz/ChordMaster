@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chord Master - MIDI Chord Game</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Chord Master</h1>
+            <p>Do You Know Your Triads?</p>
+        </header>
+
+        <div class="game-area">
+            <div class="status-message" id="status-message">Connect your MIDI keyboard to begin</div>
+            
+            <div class="game-layout">
+                <div class="score-box left-box">
+                    <div class="score-label">Score</div>
+                    <div class="score-value" id="score">0</div>
+                </div>
+                
+                <div class="chord-display" id="chord-display">
+                    <div class="chord-name" id="chord-name">-</div>
+                    <div class="chord-type" id="chord-type">Connect MIDI to start</div>
+                </div>
+                
+                <div class="score-box right-box">
+                    <div class="score-label">Time</div>
+                    <div class="score-value" id="time">0.0s</div>
+                </div>
+            </div>
+            
+            <div class="score-area">
+                <div class="score-box multiplier-box" id="multiplier-container">
+                    <div class="score-label">Multiplier</div>
+                    <div class="score-value" id="multiplier">x1</div>
+                </div>
+            </div>
+            
+            <div class="voice-leading-feedback" id="voice-leading-feedback">
+                <div class="voice-leading-text" id="voice-leading-text"></div>
+                <div class="multiplier-text" id="multiplier-text"></div>
+            </div>
+
+            <!-- Removed start button as we now use the chord display to start the game -->
+
+        </div>
+
+        <div class="feedback" id="feedback"></div>
+
+        <div class="midi-status">
+            <div id="midi-status">MIDI Status: Not Connected</div>
+        </div>
+        
+        <div class="rankings-container" id="rankings-container">
+            <!-- Rankings will be displayed here -->
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
