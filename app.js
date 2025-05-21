@@ -546,6 +546,15 @@ document.addEventListener('DOMContentLoaded', () => {
         input.required = true;
         input.placeholder = 'Your Name';
         
+        // Set the input value to the last used player name if available
+        if (playerName) {
+            input.value = playerName;
+            // Select the text so it's easy to edit or replace
+            setTimeout(() => {
+                input.select();
+            }, 50);
+        }
+        
         const submitButton = document.createElement('button');
         submitButton.type = 'submit';
         submitButton.textContent = 'Submit Score';
