@@ -386,6 +386,22 @@ button:disabled {
     animation: pulse-text 1s infinite, fire-effect 1.5s infinite, glow-text 2s infinite;
 }
 
+.multiplier-text.incorrect {
+    opacity: 1;
+    transform: scale(1);
+    color: #e74c3c;
+    background-color: rgba(231, 76, 60, 0.1);
+    padding: 5px 10px;
+    border-radius: 5px;
+    animation: shake 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20%, 60% { transform: translateX(-5px); }
+    40%, 80% { transform: translateX(5px); }
+}
+
 .calculation-step {
     animation: pop-in 0.3s forwards;
 }

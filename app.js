@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const chordDisplay = document.getElementById('chord-display');
     const scoreElement = document.getElementById('score');
     const timeElement = document.getElementById('time');
-    const feedbackElement = document.getElementById('feedback');
+    // Feedback is now shown in the multiplier-text element
     const midiStatusElement = document.getElementById('midi-status');
     const voiceLeadingText = document.getElementById('voice-leading-text');
     const multiplierText = document.getElementById('multiplier-text');
@@ -304,8 +304,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (voiceLeadingBonus > 0) {
                 feedbackText += ` +${voiceLeadingBonus} voice leading bonus!`;
             }
-            feedbackElement.textContent = feedbackText;
-            feedbackElement.className = 'feedback correct';
+            multiplierText.textContent = feedbackText;
+            multiplierText.className = 'multiplier-text active';
             
             // Increment chords played
             chordsPlayed++;
@@ -331,8 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             
             if (playedChord) {
-                feedbackElement.textContent = `Wrong chord, you are playing ${playedChord}`;
-                feedbackElement.className = 'feedback incorrect';
+                multiplierText.textContent = `Wrong chord, you are playing ${playedChord}`;
+                multiplierText.className = 'multiplier-text incorrect';
             }
         }
     }
@@ -492,8 +492,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (rightBox) rightBox.style.display = 'block';
         
         scoreElement.textContent = score;
-        feedbackElement.textContent = '';
-        feedbackElement.className = 'feedback';
+        // Clear any existing feedback
+        multiplierText.textContent = '';
+        multiplierText.className = '';
         multiplierElement.textContent = 'x1';
         multiplierContainer.classList.remove('active');
         voiceLeadingText.className = '';
@@ -514,8 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
         clearInterval(timer);
         
         statusMessage.textContent = `Game Over! Final Score: ${score}`;
-        feedbackElement.textContent = `Game complete! You scored ${score} points in ${CHORDS_PER_GAME} chords.`;
-        feedbackElement.className = 'feedback correct';
+        multiplierText.textContent = `Game complete! You scored ${score} points in ${CHORDS_PER_GAME} chords.`;
+        multiplierText.className = 'multiplier-text active';
         
         chordName.textContent = 'Done!';
         chordType.textContent = `${CHORDS_PER_GAME}/${CHORDS_PER_GAME}`;
@@ -685,8 +686,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function resetGameState() {
         // Reset UI
         statusMessage.textContent = '';  // Remove the message
-        feedbackElement.innerHTML = '';
-        feedbackElement.className = 'feedback';
+        // Clear any existing feedback
+        multiplierText.textContent = '';
+        multiplierText.className = '';
         
         // Reset voice leading elements
         voiceLeadingText.className = '';
@@ -803,8 +805,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Update UI
         statusMessage.textContent = '';
-        feedbackElement.textContent = '';
-        feedbackElement.className = 'feedback';
+        // Clear any existing feedback
+        multiplierText.textContent = '';
+        multiplierText.className = '';
         
         // Start timing
         startTime = performance.now();
