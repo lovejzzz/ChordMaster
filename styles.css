@@ -79,8 +79,8 @@ header p {
 }
 
 .chord-display {
-    width: 200px;
-    height: 200px;
+    width: 400px;
+    height: 400px;
     border-radius: 50%;
     background-color: #3498db;
     display: flex;
@@ -88,8 +88,9 @@ header p {
     justify-content: center;
     align-items: center;
     color: white;
-    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+    box-shadow: 0 8px 20px rgba(52, 152, 219, 0.5);
     transition: all 0.3s ease;
+    margin: 20px auto;
 }
 
 .chord-display.ready {
@@ -105,13 +106,13 @@ header p {
 }
 
 .chord-name {
-    font-size: 3.5rem;
+    font-size: 7rem;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .chord-type {
-    font-size: 1.2rem;
+    font-size: 2.4rem;
 }
 
 .score-area {

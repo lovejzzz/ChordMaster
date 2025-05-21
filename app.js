@@ -485,6 +485,9 @@ document.addEventListener('DOMContentLoaded', () => {
         lastPlayedNotes = [];
         previousChord = null; // Reset previous chord tracking
         
+        // Show score and time modules now that the game is starting
+        document.querySelector('.game-layout').style.display = 'flex';
+        
         scoreElement.textContent = score;
         feedbackElement.textContent = '';
         feedbackElement.className = 'feedback';
@@ -689,6 +692,9 @@ document.addEventListener('DOMContentLoaded', () => {
         multiplierText.textContent = '';
         multiplierContainer.classList.remove('active');
         
+        // Hide score and time modules when game is reset
+        document.querySelector('.game-layout').style.display = 'none';
+        
         // Reset chord display
         chordName.textContent = 'Start!';
         chordType.textContent = '';
@@ -814,6 +820,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // No need for start button event listener as we're using the chord display
 
+    // Hide score and time modules initially
+    document.querySelector('.game-layout').style.display = 'none';
+    
     // Initialize the application
     initMIDI();
     
