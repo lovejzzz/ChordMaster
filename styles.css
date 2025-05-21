@@ -24,7 +24,7 @@ body {
 
 header {
     text-align: center;
-    margin-bottom: 30px;
+    margin-bottom: 5px;
 }
 
 header h1 {
@@ -52,8 +52,8 @@ header p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
-    margin-bottom: 30px;
+    gap: 10px;
+    margin-bottom: 20px;
 }
 
 .main-game-row {
@@ -85,7 +85,7 @@ header p {
     font-size: 1.2rem;
     color: #7f8c8d;
     text-align: center;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .chord-display {
@@ -349,9 +349,9 @@ button:disabled {
 
 /* Voice leading feedback */
 .voice-leading-feedback {
-    min-height: 80px;
+    min-height: 50px;
     text-align: center;
-    margin: 10px 0 20px 0;
+    margin: 5px 0 10px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
