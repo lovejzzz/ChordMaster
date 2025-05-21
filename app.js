@@ -579,6 +579,9 @@ document.addEventListener('DOMContentLoaded', () => {
         playerName = nameInput.value.trim();
         
         if (playerName) {
+            // Check if this is a new high score before adding it
+            const isHighestScore = rankings.length === 0 || score > rankings[0].score;
+            
             // Add score to rankings
             rankings.push({
                 name: playerName,
@@ -603,6 +606,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.removeChild(modal);
             }
             
+            // If this is the highest score, show a congratulatory message
+            if (isHighestScore) {
+                showHighScoreCongrats();
+            }
+            
             // Show rankings
             showRankings();
             
@@ -616,15 +624,55 @@ document.addEventListener('DOMContentLoaded', () => {
         // Update the rankings display
         displayRankings();
         
-        // Get the rankings container to add the play again button
-        const rankingsContainer = document.getElementById('rankings-container');
+        // Reset game state to prepare for next game
+        // (No play again button needed as the chord display will be clickable)
+        resetGameState();
+    }
+    
+    // Show congratulatory message for highest score
+    function showHighScoreCongrats() {
+        // Create a congratulations overlay
+        const congrats = document.createElement('div');
+        congrats.className = 'high-score-congrats';
         
-        // Add play again button
-        const playAgainButton = document.createElement('button');
-        playAgainButton.textContent = 'Play Again';
-        playAgainButton.className = 'play-again-button';
-        playAgainButton.addEventListener('click', resetGameState);
-        rankingsContainer.appendChild(playAgainButton);
+        const congratsContent = document.createElement('div');
+        congratsContent.className = 'congrats-content';
+        
+        const congratsHeading = document.createElement('h1');
+        congratsHeading.textContent = 'NEW HIGH SCORE!';
+        
+        const congratsMessage = document.createElement('p');
+        congratsMessage.textContent = `Congratulations ${playerName}! You've achieved the highest score of ${score} points!`;
+        
+        const closeButton = document.createElement('button');
+        closeButton.textContent = 'Continue';
+        closeButton.addEventListener('click', function() {
+            document.body.removeChild(congrats);
+        });
+        
+        // Add confetti effect classes
+        for (let i = 0; i < 50; i++) {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + '%';
+            confetti.style.animationDelay = Math.random() * 5 + 's';
+            confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            congrats.appendChild(confetti);
+        }
+        
+        congratsContent.appendChild(congratsHeading);
+        congratsContent.appendChild(congratsMessage);
+        congratsContent.appendChild(closeButton);
+        congrats.appendChild(congratsContent);
+        
+        document.body.appendChild(congrats);
+        
+        // Auto-remove after 7 seconds
+        setTimeout(() => {
+            if (document.body.contains(congrats)) {
+                document.body.removeChild(congrats);
+            }
+        }, 7000);
     }
     
     // Reset game state to start a new game
@@ -775,6 +823,29 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log('Chord display clicked');
         if (chordDisplay.classList.contains('ready')) {
             startGame();
+        }
+    });
+    
+    // Add spacebar functionality to start game and submit scores
+    document.addEventListener('keydown', function(event) {
+        // Check if the key pressed is the spacebar
+        if (event.code === 'Space' || event.key === ' ') {
+            // Prevent default spacebar behavior (like scrolling the page)
+            event.preventDefault();
+            
+            // If the game is ready to start, start it
+            if (chordDisplay.classList.contains('ready')) {
+                startGame();
+            }
+            
+            // If the name input modal is open, submit the score
+            const nameModal = document.querySelector('.name-modal');
+            if (nameModal) {
+                const nameInput = document.getElementById('player-name');
+                if (nameInput && nameInput.value.trim()) {
+                    submitScore();
+                }
+            }
         }
     });
 });
