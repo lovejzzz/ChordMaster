@@ -820,16 +820,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // No need for start button event listener as we're using the chord display
 
+    // Make sure the chord display is visible and properly styled
+    const chordDisplayElement = document.getElementById('chord-display');
+    if (chordDisplayElement) {
+        chordDisplayElement.style.display = 'flex';
+    }
+    
+    // Hide score and time modules initially - do this after DOM is ready
+    const gameLayout = document.querySelector('.game-layout');
+    if (gameLayout) {
+        gameLayout.style.display = 'none';
+    }
+    
     // Initialize the application
     initMIDI();
-    
-    // Hide score and time modules initially - do this after a slight delay to ensure DOM is ready
-    setTimeout(() => {
-        const gameLayout = document.querySelector('.game-layout');
-        if (gameLayout) {
-            gameLayout.style.display = 'none';
-        }
-    }, 100);
     
     // Add a direct click handler to the chord display for testing
     // This ensures the chord display is clickable even if MIDI initialization has issues
