@@ -486,7 +486,10 @@ document.addEventListener('DOMContentLoaded', () => {
         previousChord = null; // Reset previous chord tracking
         
         // Show score and time modules now that the game is starting
-        document.querySelector('.game-layout').style.display = 'flex';
+        const leftBox = document.querySelector('.left-box');
+        const rightBox = document.querySelector('.right-box');
+        if (leftBox) leftBox.style.display = 'block';
+        if (rightBox) rightBox.style.display = 'block';
         
         scoreElement.textContent = score;
         feedbackElement.textContent = '';
@@ -826,11 +829,11 @@ document.addEventListener('DOMContentLoaded', () => {
         chordDisplayElement.style.display = 'flex';
     }
     
-    // Hide score and time modules initially - do this after DOM is ready
-    const gameLayout = document.querySelector('.game-layout');
-    if (gameLayout) {
-        gameLayout.style.display = 'none';
-    }
+    // Hide score boxes initially
+    const leftBox = document.querySelector('.left-box');
+    const rightBox = document.querySelector('.right-box');
+    if (leftBox) leftBox.style.display = 'none';
+    if (rightBox) rightBox.style.display = 'none';
     
     // Initialize the application
     initMIDI();

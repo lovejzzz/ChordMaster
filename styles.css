@@ -56,10 +56,20 @@ header p {
     margin-bottom: 30px;
 }
 
-.game-layout {
+.main-game-row {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-game-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     gap: 30px;
     width: 100%;
     max-width: 800px;
