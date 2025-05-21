@@ -349,7 +349,7 @@ button:disabled {
 
 /* Voice leading feedback */
 .voice-leading-feedback {
-    min-height: 50px;
+    height: 80px; /* Fixed height instead of min-height */
     text-align: center;
     margin: 5px 0 10px 0;
     display: flex;
@@ -362,9 +362,11 @@ button:disabled {
     font-size: 1.5rem;
     font-weight: bold;
     color: #e67e22;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease, transform 0.3s ease;
     opacity: 0;
     transform: scale(0.8);
+    height: 30px; /* Fixed height to reserve space */
+    visibility: visible; /* Always visible for layout purposes */
 }
 
 .multiplier-text {
@@ -373,17 +375,20 @@ button:disabled {
     font-weight: bold;
     color: #e74c3c;
     margin-top: 5px;
+    height: 30px; /* Fixed height to reserve space */
     opacity: 0;
-    transform: translateY(10px);
-    transition: all 0.3s ease;
+    transform: translateY(0); /* Changed from 10px to prevent movement */
+    transition: opacity 0.3s ease, color 0.3s ease, background-color 0.3s ease;
     text-shadow: 0 0 5px rgba(255, 126, 0, 0.5);
     letter-spacing: 1px;
+    visibility: visible; /* Always visible for layout purposes */
 }
 
 .multiplier-text.active {
     opacity: 1;
     transform: scale(1);
     animation: pulse-text 1s infinite, fire-effect 1.5s infinite, glow-text 2s infinite;
+    visibility: visible;
 }
 
 .multiplier-text.incorrect {
@@ -394,6 +399,7 @@ button:disabled {
     padding: 5px 10px;
     border-radius: 5px;
     animation: shake 0.5s ease;
+    visibility: visible;
 }
 
 @keyframes shake {
