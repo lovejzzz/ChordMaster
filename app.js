@@ -518,8 +518,12 @@ document.addEventListener('DOMContentLoaded', () => {
         multiplierText.textContent = `Game complete! You scored ${score} points in ${CHORDS_PER_GAME} chords.`;
         multiplierText.className = 'multiplier-text active';
         
-        chordName.textContent = 'Done!';
-        chordType.textContent = `${CHORDS_PER_GAME}/${CHORDS_PER_GAME}`;
+        chordName.textContent = 'Start!';
+        chordType.textContent = '';
+        chordDisplay.className = 'chord-display ready';
+        
+        // Make chord display clickable again
+        chordDisplay.addEventListener('click', startGame);
         
         // Show name input for ranking
         showNameInput();
@@ -698,7 +702,10 @@ document.addEventListener('DOMContentLoaded', () => {
         multiplierContainer.classList.remove('active');
         
         // Hide score and time modules when game is reset
-        document.querySelector('.game-layout').style.display = 'none';
+        const leftBox = document.querySelector('.left-box');
+        const rightBox = document.querySelector('.right-box');
+        if (leftBox) leftBox.style.display = 'none';
+        if (rightBox) rightBox.style.display = 'none';
         
         // Reset chord display
         chordName.textContent = 'Start!';
